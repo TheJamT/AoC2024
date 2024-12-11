@@ -127,7 +127,7 @@ fn main() -> Result<()> {
         .collect::<Result<Vec<Vec<Letters>>>>()?;
 
     let result = data.iter().enumerate().fold(0, |row_acc, (y, row)| {
-        let coll_acc = row.iter().enumerate().fold(0, |col_acc, (x, cell)| {
+        let col_acc = row.iter().enumerate().fold(0, |col_acc, (x, cell)| {
             let coordinate = (x, y).into();
 
             if *cell != Letters::X {
@@ -159,7 +159,7 @@ fn main() -> Result<()> {
             col_acc + num_matches
         });
 
-        row_acc + coll_acc
+        row_acc + col_acc
     });
 
     println!("{result}");
